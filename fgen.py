@@ -31,10 +31,13 @@ def render_template(template_path, new_file, context):
         logging.critical("Unable to open file \"{0}\"".format(template_path))
         return False
 
-    fout = open_file(new_file, "w")
-    if not fout:
-        logging.critical("Unable to open file \"{0}\"".format(new_file))
-        return False
+    if new_file != "-":
+        fout = open_file(new_file, "w")
+        if not fout:
+            logging.critical("Unable to open file \"{0}\"".format(new_file))
+            return False
+    else:
+        fout = sys.stdout
 
     for line in fin:
         tmpl = string.Template(line)
@@ -43,7 +46,8 @@ def render_template(template_path, new_file, context):
         fout.write(line)
 
     fin.close()
-    fout.close()
+    if new_file != "-":
+        fout.close()
 
     return True
 
