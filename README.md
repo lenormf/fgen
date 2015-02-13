@@ -51,7 +51,7 @@ Once the template was found in the templates directory and loaded, it is compile
 
 Templates are all located in your home directory, in the directory called `templates`, and are basically text files containing code or data that you tend to use often. You can list all the available templates with the `-l` option, or `--list`.
 
-The name of the file that will be generated is the fullname (name + extension) of the template used, unless the `-f` flag is used.
+The name of the file that will be generated is the fullname (name + extension) of the template used, unless the `-f` flag is used. If the string "-" is passed to the "-f" flag, the rendered template will be written to the standard output.
 
 Finally, all the default settings are tweakable with command line flags, and/or with the `Defaults` class in `fgen.py`.
 
